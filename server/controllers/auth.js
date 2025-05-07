@@ -53,3 +53,22 @@ exports.login = async(req,res) => {
     }
 }
 
+exports.me = async (req,res) => {
+    try {
+        const { id } = req.username; // จาก token
+
+        const [rows] = await db.query(
+            "SELECT id, username, email FROM users WHERE id = ?",
+            [id]
+        );
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ username: rows[0] }); // ✅ ส่งข้อมูลเต็มกลับ
+    } catch (err) {
+        console.error("me error:", err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
