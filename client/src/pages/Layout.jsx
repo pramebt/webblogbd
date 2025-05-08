@@ -2,11 +2,12 @@ import React from 'react'
 import Navbar from '../components/layout/Navbar'
 import Home from './Home'
 import Footer from '../components/layout/Footer'
+import { Outlet } from 'react-router-dom'
 const Layout = () => {
   return (
     <div className='h-screen flex flex-col'>
       <div><Navbar /></div>
-      <div className='flex-1'><Home /></div>
+      <div className='flex-1'><Outlet/></div>
       <div><Footer /></div>
       
     </div>
