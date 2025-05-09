@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   return (
     <div className='px-10 w-full h-screen flex justify-center'>
-      <div className='border h-fit grid md:grid-cols-2 lg:grid-cols-3 lg:gap-10 md:gap-5 gap-y'>
+      <div className='h-fit grid md:grid-cols-2 lg:grid-cols-3 lg:gap-10 md:gap-5 gap-y'>
       {
         data.map((item,index)=>{
          return <div

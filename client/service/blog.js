@@ -9,3 +9,9 @@ export const getBlogById = async ({id}) =>
         method: 'GET'
         
     })
+
+export const postBlogById = async (title,description,blocks) => 
+    fetcher('/blogs',{
+        method: 'POST',
+        body: JSON.stringify({ title,description,blocks })
+    })
