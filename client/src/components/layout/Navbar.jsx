@@ -15,7 +15,7 @@ const Navbar = () => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/post">Post</a>
+          <a href="/blog">Blog</a>
         </li>
         <li>
           <a href="/about">About</a>
@@ -31,19 +31,16 @@ const Navbar = () => {
       >
         <ul className="space-y-4">
           <li>
-            <a href="/about-us">About us</a>
-          </li>
-          <li>
-            <a href="/services">Services</a>
-          </li>
-          <li>
-            <a href="/use-cases">Use Cases</a>
-          </li>
-          <li>
-            <a href="/pricing">Pricing</a>
+            <a href="/">Home</a>
           </li>
           <li>
             <a href="/blog">Blog</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
           </li>
         </ul>
       </div>

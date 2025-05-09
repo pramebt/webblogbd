@@ -39,7 +39,7 @@ const Login = () => {
     }
 
   return (
-    <div className="mt-20 w-full h-screen flex justify-center items-center ">
+    <div className=" w-full h-screen flex justify-center items-center ">
         <div className='bg-black w-full h-screen flex justify-center items-center p-10'>
             
             <img src="/assets/images/login-bg2.png" 

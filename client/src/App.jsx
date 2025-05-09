@@ -4,9 +4,12 @@ import Layout from './pages/Layout'
 import Nopage from './pages/Nopage'
 import Login from './pages/Login'
 import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/dashboard/Dashboard';
 import ProtectRoute from './components/layout/ProtectRoute';
-
+import Post from './pages/dashboard/Post';
+import Manage from './pages/dashboard/Manage';
+import DashboardLayout from './pages/dashboard/DashboardLayout';
+import Showblog from './pages/Showblog';
 const router = createBrowserRouter([
   {
     path:'/',
@@ -25,15 +28,34 @@ const router = createBrowserRouter([
         element:<Login/>
       },
       {
+        path:'/blogs/:id',
+        element:<Showblog/>
+      }
+      
+      
+    ]
+  },
+  {
         path:'/dashboard',
         element:
         <ProtectRoute>
-          <Dashboard/>
-        </ProtectRoute>
+          <DashboardLayout/>
+        </ProtectRoute>,
+        children:[
+          {
+            path:'/dashboard',
+            element:<Dashboard/>
+          },
+          {
+            path:'/dashboard/post',
+            element:<Post/>
+          },
+          {
+            path:'/dashboard/manage',
+            element:<Manage/>
+          }
+        ]
       }
-      
-    ]
-  }
 ]);
 
 const App = () => {

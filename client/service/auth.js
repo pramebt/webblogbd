@@ -5,3 +5,4 @@ export const login = async (email, password) =>
         method: 'POST',
         body: JSON.stringify({ email, password })
     })
+
