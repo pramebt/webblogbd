@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { blogs } from '../../../service/blog'
-import Cardblog from '../../components/common/Cardblog'
+import Cardblogview from '../../components/common/Cardblog'
 import { useNavigate } from 'react-router-dom'
 const Dashboard = () => {
   const [data,setData] = useState([])
@@ -28,7 +28,7 @@ const Dashboard = () => {
             onClick={() => navigate(`/blogs/${item.id}`)}
           >
          <div>
-          <Cardblog  item={item}/>
+          <Cardblogview  item={item}/>
          </div>
          </div>
         })

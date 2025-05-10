@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { blogs } from '../../../service/blog'
-import Cardblog from '../../components/common/Cardblog'
 import { useNavigate } from 'react-router-dom'
-const Dashboard = () => {
+import CardblogManage from '../../components/common/CardblogManage'
+const Manage = () => {
   const [data,setData] = useState([])
   const navigate = useNavigate()
   useEffect(()=>{
@@ -24,11 +24,11 @@ const Dashboard = () => {
         data.map((item,index)=>{
          return <div
             key={index}
-            className="group cursor-pointer rounded-[20px] overflow-hidden shadow hover:shadow-lg transition-all duration-200"
+            className="cursor-pointer rounded-[20px] overflow-hidden shadow hover:shadow-lg transition-all duration-200"
             onClick={() => navigate(`/blogs/${item.id}`)}
           >
          <div>
-          <Cardblog  item={item}/>
+          <CardblogManage item={item}/>
          </div>
          </div>
         })
@@ -38,4 +38,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Manage

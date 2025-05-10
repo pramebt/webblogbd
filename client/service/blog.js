@@ -16,3 +16,15 @@ export const postBlogById = async (title,description,blocks) =>
         body: JSON.stringify({ title,description,blocks })
     })
 
+// เพิ่มฟังก์ชัน Edit Blog
+export const editBlogById = async (id, title, description, blocks) =>
+    fetcher(`/blogs/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ title, description, blocks })
+    });
+
+// เพิ่มฟังก์ชัน Delete Blog
+export const deleteBlogById = async (id) =>
+    fetcher(`/blogs/${id}`, {
+        method: 'DELETE'
+    });

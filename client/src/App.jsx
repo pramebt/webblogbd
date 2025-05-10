@@ -10,6 +10,8 @@ import Post from './pages/dashboard/Post';
 import Manage from './pages/dashboard/Manage';
 import DashboardLayout from './pages/dashboard/DashboardLayout';
 import Showblog from './pages/Showblog';
+import Editpost from './pages/dashboard/Editpost';
+import Blogs from './pages/Blogs';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +33,11 @@ const router = createBrowserRouter([
       {
         path:'/blogs/:id',
         element:<Showblog/>
+      },
+      {
+        path:'/blogs',
+        element:<Blogs/>,
       }
-      
       
     ]
   },
@@ -50,6 +55,10 @@ const router = createBrowserRouter([
           {
             path:'/dashboard/post',
             element:<Post/>
+          },
+          {
+            path:'/dashboard/editpost/:id',
+            element:<Editpost/>
           },
           {
             path:'/dashboard/manage',

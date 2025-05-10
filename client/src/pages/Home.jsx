@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { blogs } from "../../service/blog";
 import Cardblogview from "../components/common/Cardblogview";
 
@@ -24,7 +23,7 @@ const Home = () => {
   const previewData = data.slice(0, 3);
 
   return (
-    <div className="pt-20 px-20">
+    <div className="px-20">
       <div className="flex justify-center pt-5">
         <img src="/assets/images/background2.svg" alt="background2" />
       </div>
