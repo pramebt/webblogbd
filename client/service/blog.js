@@ -15,3 +15,4 @@ export const postBlogById = async (title,description,blocks) =>
         method: 'POST',
         body: JSON.stringify({ title,description,blocks })
     })
+
