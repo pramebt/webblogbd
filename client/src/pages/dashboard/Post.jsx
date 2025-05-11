@@ -1,46 +1,52 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { postBlogById } from '../../../service/blog'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { postBlogById } from "../../../service/blog";
 
 const Post = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [form, setForm] = useState({
-    title: '',
-    description: '',
-    blocks: [{ type: '', data: '' }]
-  })
+    title: "",
+    description: "",
+    blocks: [{ type: "", data: "" }],
+  });
 
-  const handleChange = e => {
-    const { name, value } = e.target
-    setForm(prev => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleBlockChange = (index, field, value) => {
-    const newBlocks = [...form.blocks]
-    newBlocks[index][field] = value
-    setForm(prev => ({ ...prev, blocks: newBlocks }))
-  }
+    const newBlocks = [...form.blocks];
+    newBlocks[index][field] = value;
+    setForm((prev) => ({ ...prev, blocks: newBlocks }));
+  };
 
   const addBlock = () => {
-    setForm(prev => ({ ...prev, blocks: [...prev.blocks, { type: '', data: '' }] }))
-  }
+    setForm((prev) => ({
+      ...prev,
+      blocks: [...prev.blocks, { type: "", data: "" }],
+    }));
+  };
 
-  const removeBlock = index => {
-    setForm(prev => ({ ...prev, blocks: prev.blocks.filter((_, i) => i !== index) }))
-  }
+  const removeBlock = (index) => {
+    setForm((prev) => ({
+      ...prev,
+      blocks: prev.blocks.filter((_, i) => i !== index),
+    }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const { title, description, blocks } = form
-      const res = await postBlogById(title, description, blocks)
-      console.log(res)
-        alert('Post submitted successfully')
-        navigate('/dashboard')
+      const { title, description, blocks } = form;
+      const res = await postBlogById(title, description, blocks);
+      console.log(res);
+      alert("Post submitted successfully");
+      navigate("/dashboard");
     } catch (error) {
-      console.error('Submission error', error)
+      console.error("Submission error", error);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-6 space-y-6">
@@ -76,23 +82,34 @@ const Post = () => {
         <label className="text-gray-700">Blocks</label>
         {form.blocks.map((block, index) => (
           <div key={index} className="grid grid-cols-3 gap-4 items-end">
+            {/* เปลี่ยนเป็น dropdown */}
             <div className="col-span-1">
               <label className="mb-1 text-gray-600 block">Type</label>
-              <input
-                type="text"
+              <select
                 value={block.type}
-                onChange={e => handleBlockChange(index, 'type', e.target.value)}
-                className="border rounded p-2 focus:outline-none focus:ring w-full"
-                placeholder="e.g. text, image"
-                required
-              />
+                onChange={(e) =>
+                  handleBlockChange(index, "type", e.target.value)
+                }
+                className="border rounded p-2 appearance-none focus:outline-none focus:ring w-full"
+                 required
+              >
+                <option value="" disabled>
+                  Choose type 
+                </option>
+                <option value="header">Header</option>
+                <option value="paragraph">Paragraph</option>
+                <option value="image">Image</option>
+                <option value="code">Code</option>
+              </select>
             </div>
             <div className="col-span-2">
               <label className="mb-1 text-gray-600 block">Data</label>
               <input
                 type="text"
                 value={block.data}
-                onChange={e => handleBlockChange(index, 'data', e.target.value)}
+                onChange={(e) =>
+                  handleBlockChange(index, "data", e.target.value)
+                }
                 className="border rounded p-2 focus:outline-none focus:ring w-full"
                 placeholder="Enter block data"
                 required
@@ -124,7 +141,7 @@ const Post = () => {
         Submit Post
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

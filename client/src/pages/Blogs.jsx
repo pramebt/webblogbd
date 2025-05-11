@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { blogs } from '../../service/blog'
 import { useNavigate } from 'react-router-dom'
-import Cardblogview from "../components/common/Cardblogview";
+import Cardblogview from '../components/common/Cardblogview'
 const Blogs = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -29,7 +29,7 @@ const Blogs = () => {
               className="group cursor-pointer rounded-[20px] overflow-hidden   transition-all duration-200"
               onClick={() => navigate(`/blogs/${item.id}`)}
             >
-              <Cardblogview item={item}/>
+             <Cardblogview item={item} /> 
             </div>
           ))}
         </div>

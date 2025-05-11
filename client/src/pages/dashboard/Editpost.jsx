@@ -118,14 +118,22 @@ const EditBlog = () => {
           <div key={index} className="grid grid-cols-3 gap-4 items-end">
             <div className="col-span-1">
               <label className="mb-1 text-gray-600 block">Type</label>
-              <input
-                type="text"
+              <select
                 value={block.type}
-                onChange={e => handleBlockChange(index, 'type', e.target.value)}
-                className="border rounded p-2 focus:outline-none focus:ring w-full"
-                placeholder="e.g. text, image"
-                required
-              />
+                onChange={(e) =>
+                  handleBlockChange(index, "type", e.target.value)
+                }
+                className="border rounded p-2 appearance-none focus:outline-none focus:ring w-full"
+                 required
+              >
+                <option value="" disabled>
+                  Choose type 
+                </option>
+                <option value="header">Header</option>
+                <option value="paragraph">Paragraph</option>
+                <option value="image">Image</option>
+                <option value="code">Code</option>
+              </select>
             </div>
             <div className="col-span-2">
               <label className="mb-1 text-gray-600 block">Data</label>
