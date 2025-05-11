@@ -25,20 +25,29 @@ const Home = () => {
 
   return (
     <div className="px-20 ">
-      <div className="flex justify-center pt-5">
-        <img src="/assets/images/background2.svg" alt="background2" />
+      <div className="flex flex-col items-center justify-center gap-5 pt-5">
+        <h1 className="text-2xl md:text-[52px] ">
+          Blogs Of Developer
+        </h1>
+        <img 
+        src="/assets/images/undraw_programming.svg" 
+        alt="background2" 
+        className="block md:hidden w-100"/>
+        <img 
+        src="/assets/images/undraw_quiet-street.svg" 
+        alt="background2" 
+        className="hidden md:block w-150"/>
       </div>
 
       <div className="font-jetbrains text-center mt-5 ">
-        <h1>Welcome to bdblog</h1>
-        <p>Your go-to platform for insightful posts.</p>
+        <h1>Learn new techniques and best practices for popular tools.</h1>
       </div>
 
 
         <div className="flex justify-center mt-6 mb-6">
           <button
             onClick={() => navigate('/blogs')}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            className="px-6 py-3 bg-[#eaaa3c] text-white rounded-lg cursor-pointer"
           >
             Read more blogs
           </button>
