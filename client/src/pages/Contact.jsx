@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 const Contact = () => {
   // Motion variants
   const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
@@ -28,7 +28,7 @@ const Contact = () => {
   const isInView = useInView(ref, { once: true });
 
   const onSubmit = async (e) => {
-    event.preventDefault();
+    e.preventDefault();
     setResult("");
 
     const form = e.target;
