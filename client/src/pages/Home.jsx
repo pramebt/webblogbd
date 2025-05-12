@@ -58,7 +58,7 @@ const Home = () => {
           // แสดง GIF โหลดเมื่อยังไม่มีข้อมูล
           <div className="flex justify-center py-20">
             <img
-              src="/assets/Rolling.gif"
+              src="/assets/icons/Rolling.gif"
               alt="Loading..."
               className=""
             />
