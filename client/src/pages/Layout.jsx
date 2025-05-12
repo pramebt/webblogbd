@@ -8,7 +8,7 @@ const Layout = () => {
     <div className='h-screen flex flex-col'>
       <div><Navbar /></div>
       <div className='flex-1 mt-20'><Outlet/></div>
-      <div><Footer /></div>
+      <div className=''><Footer /></div>
       
     </div>
   )

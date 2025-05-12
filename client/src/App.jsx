@@ -12,6 +12,8 @@ import DashboardLayout from './pages/dashboard/DashboardLayout';
 import Showblog from './pages/Showblog';
 import Editpost from './pages/dashboard/Editpost';
 import Blogs from './pages/Blogs';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path:'/blogs',
         element:<Blogs/>,
+      },
+      {
+        path:'/about',
+        element:<About/>
+      },
+      {
+        path:'/contact'
+        ,element:<Contact/>
       }
       
     ]
