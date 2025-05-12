@@ -21,7 +21,9 @@ const Showblog = () => {
   }, [id]);
 
   if (!data) {
-    return <h1>loading</h1>;
+    return <div className="flex justify-center">
+      <img src="/assets/icons/loading.gif" alt="loading" />
+    </div>
   }
   
   const elements = [

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { blogs } from "../../service/blog";
 
 import Cardblogview from "../components/common/Cardblogview";
+import CardLoading from "../components/common/CardLoading";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -60,8 +61,11 @@ const Home = () => {
             <img
               src="/assets/icons/Rolling.gif"
               alt="Loading..."
-              className=""
+              className="hidden md:block w-24 h-24"
             />
+            <div className="block md:hidden space-y-6 w-full px-2 sm:px-10 max-w-sm mx-auto">
+              <CardLoading />
+            </div>
           </div>
         ) : (
           // แสดงตารางเมื่่อมีข้อมูลแล้ว
