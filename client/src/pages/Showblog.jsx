@@ -22,7 +22,8 @@ const Showblog = () => {
 
   if (!data) {
     return <div className="flex justify-center">
-      <img src="/assets/icons/loading.gif" alt="loading" />
+      <img src="/assets/icons/Rolling.gif" alt="loading"
+      className="w-24 h-24" />
     </div>
   }
   
