@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
+import { deleteBlogById } from "../../../service/blog";
+ 
 const CardblogManage = ({ item, onSuccess }) => {
   const navigate = useNavigate();
 

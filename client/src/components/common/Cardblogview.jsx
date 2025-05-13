@@ -9,11 +9,8 @@ const Cardblogview = ({item}) => {
          >
            <div>
              <div className="p-[10px]">
-               <img
-                 src="/assets/images/undraw_monster-artist.svg"
-                 alt="bg"
-                 className="rounded-[20px] h-[180px] w-full bg-cover"
-               />
+               <div className="bg-[#eaaa3c] rounded-[20px] h-[180px] w-full bg-cover"
+               ></div>
              </div>
      
              <div className="px-5">

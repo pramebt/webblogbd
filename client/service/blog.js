@@ -7,7 +7,6 @@ export const blogs = async () =>
 export const getBlogById = async ({id}) => 
     fetcher(`/blogs/${id}`,{
         method: 'GET'
-        
     })
 
 export const postBlogById = async (title,description,blocks) => 

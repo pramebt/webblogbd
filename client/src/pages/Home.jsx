@@ -34,7 +34,7 @@ const Home = () => {
           className="block md:hidden w-100"
         />
         <img
-          src="/assets/images/undraw_quiet-street.svg"
+          src="/assets/images/undraw_monster-artist.svg"
           alt="background2"
           className="hidden md:block w-150"
         />
