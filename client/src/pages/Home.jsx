@@ -41,7 +41,7 @@ const Home = () => {
       </div>
 
       <div className="font-jetbrains text-center mt-5 ">
-        <h1>Learn new techniques and best practices for popular tools.</h1>
+        <h1>This blog is a curated journal of my learning journey covering coding projects, diverse skills, and actionable tips with practical guides to help you apply what I’ve discovered.</h1>
       </div>
 
       <div className="flex justify-center mt-6 mb-6">

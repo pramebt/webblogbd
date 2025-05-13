@@ -140,7 +140,7 @@ const Contact = () => {
               type="text"
               name="name"
               placeholder="Enter your name"
-              className={`mt-2 p-3 w-full border rounded-md bg-white outline-none ${
+              className={`mt-2 p-3 w-full border-b  bg-white outline-none ${
                 errors.name ? "border-red-500" : "border-gray-400"
               }`}
             />
@@ -155,7 +155,7 @@ const Contact = () => {
               type="email"
               name="email"
               placeholder="Enter your email"
-              className={`mt-2 p-3 w-full border rounded-md bg-white outline-none ${
+              className={`mt-2 p-3 w-full border-b bg-white outline-none ${
                 errors.email ? "border-red-500" : "border-gray-400"
               }`}
             />
