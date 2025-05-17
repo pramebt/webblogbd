@@ -36,6 +36,11 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/project" className={linkClass("/project")}>
+            Project
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/contact" className={linkClass("/contact")}>
             Contact
           </NavLink>

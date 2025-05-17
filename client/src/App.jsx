@@ -14,6 +14,7 @@ import Editpost from './pages/dashboard/Editpost';
 import Blogs from './pages/Blogs';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Project from './pages/Project';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path:'/about',
         element:<About/>
+      },
+      {
+        path:'/project',
+        element:<Project/>
       },
       {
         path:'/contact'

@@ -49,7 +49,7 @@ const About = () => {
             designs through code and I built this website to document various
             programming techniques.
           </motion.p>
-          <div className="mt-10">
+          <div className="mt-10 mb-10">
             <a href="https://bd-portfolio-real.vercel.app/" target="_blank">
               <motion.button 
               variants={fadeUp}
