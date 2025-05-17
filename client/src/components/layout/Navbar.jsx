@@ -49,7 +49,7 @@ const Navbar = () => {
 
       {/* Mobile menu overlay */}
       <div
-        className={`absolute top-16 right-0 bg-white text-black shadow-lg rounded-lg p-5 md:hidden transition-transform duration-300 ease-in-out ${
+        className={`absolute top-20  right-0 bg-white text-black shadow-lg rounded-lg p-5 md:hidden transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } z-40`}
       >
