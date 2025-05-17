@@ -11,7 +11,7 @@ const Navbar = () => {
     `px-3 py-1 rounded-4xl transition ${
       location.pathname === path
         ? "bg-[#eaaa3c] text-white"
-        : "hover:bg-gray-200"
+        : "hover:bg-gray-20"
     }`;
 
   return (
