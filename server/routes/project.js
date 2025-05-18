@@ -7,13 +7,18 @@ const {
   updateProject,
   deleteProject
 } = require('../controllers/project');
-const { protect } = require('../middlewares/auth'); // ใช้ middleware ตรวจสอบ token
+
+const { protect } = require('../middlewares/auth');
+const upload = require('../middlewares/multer'); // 👈 ใช้ multer รับไฟล์
 
 // 📌 ROUTES
-router.get('/projects', getAllProjects);               // ดึงทั้งหมด
-router.get('/projects/:id', getProjectById);           // ดึงรายตัว
-router.post('/projects', protect, postProject);        // เพิ่มโปรเจกต์ (ต้อง login)
-router.put('/projects/:id', protect, updateProject);   // แก้ไขโปรเจกต์
-router.delete('/projects/:id', protect, deleteProject); // ลบโปรเจกต์
+router.get('/projects', getAllProjects);
+router.get('/projects/:id', getProjectById);
+
+// ✅ อัปโหลดไฟล์ + ข้อมูลอื่นผ่าน FormData
+router.post('/projects', protect, upload.single('image'), postProject);
+router.put('/projects/:id', protect, upload.single('image'), updateProject);
+
+router.delete('/projects/:id', protect, deleteProject);
 
 module.exports = router;
