@@ -1,125 +1,119 @@
-import React,{ useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { postProject } from "../../../service/project";
+import React, { useState } from "react";
 
 const ProjectPost = () => {
-  const navigate = useNavigate();
   const [form, setForm] = useState({
     title: "",
     subtitle: "",
     description: "",
-    image_url: "",
     demo_url: "",
     github_url: "",
-    
   });
+
+  const [image, setImage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  
+  const handleFileChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!image) {
+      alert("Please select an image");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", form.title);
+    formData.append("subtitle", form.subtitle);
+    formData.append("description", form.description);
+    formData.append("demo_url", form.demo_url);
+    formData.append("github_url", form.github_url);
+    formData.append("image_url", image); 
+
     try {
-      const res = await postProject(form);
-      console.log(res);
-      alert("Project submitted successfully");
-      navigate("/dashboard/project/manage");
-    } catch (error) {
-      console.error("Submission error", error);
+      const res = await fetch("http://localhost:5000/api/projects", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // ถ้ามี token
+        },
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert("Project created successfully!");
+        
+        console.log(result);
+      } else {
+        throw new Error(result.message || "Failed to create project");
+      }
+    } catch (err) {
+      console.error("Error submitting:", err);
       alert("Error submitting project");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-6 space-y-6">
-      {/* Title */}
-      <div className="flex flex-col">
-        <label className="mb-2 text-gray-700">Title</label>
-        <input
-          name="title"
-          type="text"
-          value={form.title}
-          onChange={handleChange}
-          className="border rounded p-2 focus:outline-none focus:ring"
-          placeholder="Enter title"
-          required
-        />
-      </div>
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
+      <input
+        type="text"
+        name="title"
+        placeholder="Title"
+        value={form.title}
+        onChange={handleChange}
+        className="w-full border p-2 rounded"
+        required
+      />
+      <input
+        type="text"
+        name="subtitle"
+        placeholder="Subtitle"
+        value={form.subtitle}
+        onChange={handleChange}
+        className="w-full border p-2 rounded"
+      />
+      <textarea
+        name="description"
+        placeholder="Description"
+        value={form.description}
+        onChange={handleChange}
+        className="w-full border p-2 rounded"
+        required
+      />
+      <input
+        type="url"
+        name="demo_url"
+        placeholder="Demo URL"
+        value={form.demo_url}
+        onChange={handleChange}
+        className="w-full border p-2 rounded"
+      />
+      <input
+        type="url"
+        name="github_url"
+        placeholder="GitHub URL"
+        value={form.github_url}
+        onChange={handleChange}
+        className="w-full border p-2 rounded"
+      />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        className="w-full border p-2 rounded"
+        required
+      />
 
-      {/* Subtitle */}
-      <div className="flex flex-col">
-        <label className="mb-2 text-gray-700">Subtitle</label>
-        <input
-          name="subtitle"
-          type="text"
-          value={form.subtitle}
-          onChange={handleChange}
-          className="border rounded p-2 focus:outline-none focus:ring"
-          placeholder="Enter subtitle"
-        />
-      </div>
-
-      {/* Description */}
-      <div className="flex flex-col">
-        <label className="mb-2 text-gray-700">Description</label>
-        <textarea
-          name="description"
-          value={form.description}
-          onChange={handleChange}
-          className="border rounded p-2 focus:outline-none focus:ring h-24"
-          placeholder="Enter description"
-          required
-        />
-      </div>
-
-      {/* Image URL */}
-      <div className="flex flex-col">
-        <label className="mb-2 text-gray-700">Image URL</label>
-        <input
-          name="image_url"
-          type="url"
-          value={form.image_url}
-          onChange={handleChange}
-          className="border rounded p-2 focus:outline-none focus:ring"
-          placeholder="https://example.com/image.jpg"
-        />
-      </div>
-
-      {/* Demo URL */}
-      <div className="flex flex-col">
-        <label className="mb-2 text-gray-700">Demo URL</label>
-        <input
-          name="demo_url"
-          type="url"
-          value={form.demo_url}
-          onChange={handleChange}
-          className="border rounded p-2 focus:outline-none focus:ring"
-          placeholder="https://your-demo-site.com"
-        />
-      </div>
-
-      {/* GitHub URL */}
-      <div className="flex flex-col">
-        <label className="mb-2 text-gray-700">GitHub URL</label>
-        <input
-          name="github_url"
-          type="url"
-          value={form.github_url}
-          onChange={handleChange}
-          className="border rounded p-2 focus:outline-none focus:ring"
-          placeholder="https://github.com/username/project"
-        />
-      </div>
-
-     
-      {/* Submit */}
       <button
         type="submit"
-        className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       >
         Submit Project
       </button>

@@ -16,8 +16,8 @@ router.get('/projects', getAllProjects);
 router.get('/projects/:id', getProjectById);
 
 // ✅ อัปโหลดไฟล์ + ข้อมูลอื่นผ่าน FormData
-router.post('/projects', protect, upload.single('image'), postProject);
-router.put('/projects/:id', protect, upload.single('image'), updateProject);
+router.post('/projects', protect, upload.single('image_url'), postProject);
+router.put('/projects/:id', protect, upload.single('image_url'), updateProject);
 
 router.delete('/projects/:id', protect, deleteProject);
 
