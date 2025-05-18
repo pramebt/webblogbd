@@ -26,7 +26,7 @@ const Login = () => {
             if(res?.token){
                 localStorage.setItem('token', res.token)
                 alert('Login successful');
-                navigate('/dashboard');  
+                navigate('/dashboard/blog');  
             }else{
                 alert('Login failed: token not found')
             }

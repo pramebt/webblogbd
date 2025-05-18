@@ -15,6 +15,9 @@ import Blogs from './pages/Blogs';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Project from './pages/Project';
+import ProjectManage from './pages/dashboard/ProjectManage';
+import ProjectPost from './pages/dashboard/ProjectPost';
+import ProjectEdit from './pages/dashboard/ProjectEdit';
 
 const router = createBrowserRouter([
   {
@@ -64,21 +67,35 @@ const router = createBrowserRouter([
         </ProtectRoute>,
         children:[
           {
-            path:'/dashboard',
+            path:'/dashboard/blog',
             element:<Dashboard/>
           },
           {
-            path:'/dashboard/post',
+            path:'/dashboard/blog/post',
             element:<Post/>
           },
           {
-            path:'/dashboard/editpost/:id',
+            path:'/dashboard/blog/editpost/:id',
             element:<Editpost/>
           },
           {
-            path:'/dashboard/manage',
+            path:'/dashboard/blog/manage',
             element:<Manage/>
-          }
+          },
+          {
+            path:'/dashboard/project/manage',
+            element:<ProjectManage/>
+          },
+          {
+            path:'/dashboard/project/post',
+            element:<ProjectPost/>
+          },
+          {
+            path:'/dashboard/project/edit/:id',
+            element:<ProjectEdit/>
+          },
+          
+
         ]
       }
 ]);

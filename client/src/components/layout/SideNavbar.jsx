@@ -73,21 +73,21 @@ const SideNavbar = () => {
               }`}
             >
               <NavLink
-                to="/dashboard"
+                to="/dashboard/blog"
                 onClick={handleClick}
                 className="px-4 py-1 rounded hover:bg-white/10 transition"
               >
                 Dashboard
               </NavLink>
               <NavLink
-                to="/dashboard/manage"
+                to="/dashboard/blog/manage"
                 onClick={handleClick}
                 className="px-4 py-1 rounded hover:bg-white/10 transition"
               >
                 Manage
               </NavLink>
               <NavLink
-                to="/dashboard/post"
+                to="/dashboard/blog/post"
                 onClick={handleClick}
                 className="px-4 py-1 rounded hover:bg-white/10 transition"
               >
@@ -111,14 +111,14 @@ const SideNavbar = () => {
               }`}
             >
               <NavLink
-                to="/project/manage"
+                to="/dashboard/project/manage"
                 onClick={handleClick}
                 className="px-4 py-1 rounded hover:bg-white/10 transition"
               >
                 Manage
               </NavLink>
               <NavLink
-                to="/project/post"
+                to="/dashboard/project/post"
                 onClick={handleClick}
                 className="px-4 py-1 rounded hover:bg-white/10 transition"
               >
@@ -164,18 +164,18 @@ const SideNavbar = () => {
               }`}
             >
               <div className="ml-4 flex flex-col space-y-2">
-                <NavLink to="/dashboard" className={linkClass("/dashboard")}>
+                <NavLink to="/dashboard/blog" className={linkClass("/dashboard/blog")}>
                   Dashboard
                 </NavLink>
                 <NavLink
-                  to="/dashboard/manage"
-                  className={linkClass("/dashboard/manage")}
+                  to="/dashboard/blog/manage"
+                  className={linkClass("/dashboard/blog/manage")}
                 >
                   Manage
                 </NavLink>
                 <NavLink
-                  to="/dashboard/post"
-                  className={linkClass("/dashboard/post")}
+                  to="/dashboard/blog/post"
+                  className={linkClass("/dashboard/blog/post")}
                 >
                   Post
                 </NavLink>
@@ -208,14 +208,14 @@ const SideNavbar = () => {
             >
               <div className="ml-4 flex flex-col space-y-2">
                 <NavLink
-                  to="/project/manage"
-                  className={linkClass("/project/manage")}
+                  to="/dashboard/project/manage"
+                  className={linkClass("/dashboard/project/manage")}
                 >
                   Manage
                 </NavLink>
                 <NavLink
-                  to="/project/post"
-                  className={linkClass("/project/post")}
+                  to="/dashboard/project/post"
+                  className={linkClass("/dashboard/project/post")}
                 >
                   Post
                 </NavLink>
