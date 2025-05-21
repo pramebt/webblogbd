@@ -1,11 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { getAllProjects } from '../../service/project'; // เปลี่ยนจาก blogs เป็น getProjects
-import Cardprojectview from '../components/common/Cardprojectview';
-import CardLoading from '../components/common/CardLoading';
-
+import React, { useEffect, useState, useRef } from "react";
+import { getAllProjects } from "../../service/project"; // เปลี่ยนจาก blogs เป็น getProjects
+import Cardprojectview from "../components/common/Cardprojectview";
+import CardLoading from "../components/common/CardLoading";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 const Project = () => {
   const [data, setData] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,14 +35,27 @@ const Project = () => {
         const res = await getAllProjects();
         setData(res || []);
       } catch (error) {
-        console.error('Show project fail: ', error);
+        console.error("Show project fail: ", error);
       }
     };
     fetchData();
   }, []);
-
+  
   return (
-    <div className="px-4 sm:px-10 lg:px-20 py-10">
+    <motion.div
+      ref={ref}
+      variants={container}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="px-4 sm:px-10 lg:px-20 py-10 flex flex-col items-center"
+    >
+      <motion.h1
+        variants={fadeUp}
+        custom={1}
+        className="text-4xl font-bold mb-10"
+      >
+        Projects
+      </motion.h1>
       {data.length === 0 ? (
         <div className="flex justify-center py-20">
           <img
@@ -33,7 +68,10 @@ const Project = () => {
           </div>
         </div>
       ) : (
-        <div className="grid w-full h-fit gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div 
+        variants={fadeUp}
+        custom={2}
+        className="grid w-full h-fit gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {data.map((item, index) => (
             <div
               key={index}
@@ -43,7 +81,7 @@ const Project = () => {
               <Cardprojectview item={item} />
             </div>
           ))}
-        </div>
+        </motion.div>
       )}
 
       {/* ✅ Modal แสดงข้อมูลโปรเจกต์ */}
@@ -95,7 +133,7 @@ const Project = () => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

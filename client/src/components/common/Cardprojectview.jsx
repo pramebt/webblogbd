@@ -1,31 +1,27 @@
 import React from 'react'
-import { DateTime } from 'luxon'
+
 const Cardprojectview = ({item}) => {
   return (
     <div
-               className="w-full h-[280px] rounded-[20px] flex flex-col justify-between cursor-pointer"
-             >
-               <div>
-                 <div className="p-[10px]">
-                   <div className="bg-[#eaaa3c] rounded-[20px] h-[180px] w-full bg-cover"
-                   ></div>
-                 </div>
-         
-                 <div className="px-5">
-                   <h1 className="font-semibold text-lg">{item?.title || "no data"}</h1>
-                   <p className="text-gray-500 text-sm">
-                     {item?.created_at
-                       ? DateTime
-                           .fromISO(item.created_at, { zone: 'utc' })
-                           .setZone('Asia/Bangkok')
-                           .toFormat("dd MMMM yyyy")
-                       : 'no data'}
-                   </p>
-                 </div>
-               </div>
-         
-               {/* Removed Edit and Delete buttons as requested */}
-             </div>
+          className="border border-black bg-white/80 backdrop-blur rounded-4xl px-5 py-5 cursor-pointer hover:scale-105 transition-all duration-500"
+          
+        >
+          <div>
+            <div className="p-[10px]">
+              <img
+                src={item?.image_url || "no data"}
+                alt={item?.title || "no data"}
+                className="border border-white w-full h-[250px] object-cover rounded-2xl"
+              />
+            </div>
+    
+            <div className="bg-white flex flex-row mt-5 p-4 rounded-lg shadow-sm hover:shadow-md hover:bg-gray-100 transition-all duration-200 ease-in-out">
+              <h1 className="font-semibold text-lg">{item?.title || "no data"}</h1>
+            </div>
+          </div>
+    
+          {/* Removed Edit and Delete buttons as requested */}
+        </div>
   )
 }
 
