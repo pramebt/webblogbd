@@ -52,7 +52,7 @@ const Project = () => {
       <motion.h1
         variants={fadeUp}
         custom={1}
-        className="text-4xl font-bold mb-10"
+        className="text-center text-3xl md:text-4xl lg:text-5xl mb-10"
       >
         Projects
       </motion.h1>
@@ -86,7 +86,7 @@ const Project = () => {
 
       {/* ✅ Modal แสดงข้อมูลโปรเจกต์ */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-10 py-10">
           <div className="bg-white max-w-lg w-full rounded-xl shadow-lg p-6 relative">
             {/* ปุ่มปิด */}
             <button
@@ -108,15 +108,20 @@ const Project = () => {
             <p className="text-gray-800 mb-4">{selectedProject.description}</p>
 
             {/* ลิงก์ */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-row justify-center gap-5">
               {selectedProject.demo_url && (
+                
                 <a
                   href={selectedProject.demo_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-blue-600 underline"
+                  className="flex flex-row items-center justify-center bg-blue-400 gap-2 px-2 py-1 rounded-4xl text-white font-semibold"
                 >
-                  🔗 Live Demo
+                  <img 
+                  src="/assets/icons/play-icon.svg" 
+                  alt="play"
+                  className="w-10" />
+                   Demo
                 </a>
               )}
               {selectedProject.github_url && (
@@ -124,9 +129,13 @@ const Project = () => {
                   href={selectedProject.github_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-gray-700 underline"
+                  className="flex flex-row items-center justify-center bg-black gap-2 px-2 py-1 rounded-4xl text-white font-semibold"
                 >
-                  🛠 GitHub Repository
+                  <img
+                   src="/assets/icons/github-icon.svg" 
+                   alt="GitHub" 
+                   className="w-10" />
+                  GitHub
                 </a>
               )}
             </div>

@@ -3,7 +3,7 @@ import React from 'react'
 const Cardprojectview = ({item}) => {
   return (
     <div
-          className="border border-black bg-white/80 backdrop-blur rounded-4xl px-5 py-5 cursor-pointer hover:scale-105 transition-all duration-500"
+          className=" bg-amber-400 backdrop-blur rounded-4xl px-5 py-5 cursor-pointer hover:scale-105 transition-all duration-500"
           
         >
           <div>
@@ -11,7 +11,7 @@ const Cardprojectview = ({item}) => {
               <img
                 src={item?.image_url || "no data"}
                 alt={item?.title || "no data"}
-                className="border border-white w-full h-[250px] object-cover rounded-2xl"
+                className=" w-full h-[250px] object-cover rounded-2xl"
               />
             </div>
     

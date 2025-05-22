@@ -44,10 +44,10 @@ const About = () => {
             custom={1}
             className="text-[28px] md:text-[52px] font-semibold"
           >
-            Front-end Developer
+            I’m a Web Developer
           </motion.h1>
           <motion.p variants={fadeUp} custom={2}>
-            I’m a Junior Front-End Developer who’s truly passionate about
+            I’m a Junior Web Developer who’s truly passionate about
             crafting beautiful, user-focused websites and breathing life into
             designs through code and I built this website to document various
             programming techniques.

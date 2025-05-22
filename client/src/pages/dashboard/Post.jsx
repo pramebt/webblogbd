@@ -98,7 +98,6 @@ const Post = () => {
                 </option>
                 <option value="header">Header</option>
                 <option value="paragraph">Paragraph</option>
-                <option value="image">Image</option>
                 <option value="code">Code</option>
               </select>
             </div>
