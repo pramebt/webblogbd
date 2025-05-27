@@ -1,10 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { blogs } from "../../service/blog";
-
+import { motion } from "framer-motion";
 import Cardblogview from "../components/common/blog/Cardblogview";
 import CardLoading from "../components/common/CardLoading";
-
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.13,
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  }),
+};
+const container = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.13 },
+  },
+};
 const Home = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -25,36 +42,67 @@ const Home = () => {
   const previewData = data.slice(0, 3);
 
   return (
-    <div className="px-20 ">
-      <div className="flex flex-col items-center justify-center gap-5 pt-5">
-        <h1 className="text-2xl md:text-[52px] ">Blogs Of Developer</h1>
-        <img
-          src="/assets/images/undraw_programming.svg"
-          alt="background2"
-          className="block md:hidden w-100"
-        />
-        <img
-          src="/assets/images/undraw_monster-artist.svg"
-          alt="background2"
-          className="hidden md:block w-150"
-        />
-      </div>
+   <motion.div 
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="px-4 sm:px-10 lg:px-20"
+    >
+      <motion.div
+        variants={container}
+        className="flex flex-col items-center justify-center gap-5 pt-10"
+      >
+        <motion.h1
+          variants={fadeUp}
+          custom={1}
+          className="text-2xl md:text-[52px] font-bold text-gray-900 text-center"
+        >Blogs Of Developer</motion.h1>
+        <motion.div variants={fadeUp} custom={2} className="w-full flex justify-center">
+          <img
+            src="/assets/images/undraw_programming.svg"
+            alt="background2"
+            className="block md:hidden w-64"
+          />
+          <img
+            src="/assets/images/undraw_monster-artist.svg"
+            alt="background2"
+            className="hidden md:block w-[360px]"
+          />
+        </motion.div>
+      </motion.div>
+      
 
-      <div className="font-jetbrains text-center mt-5 ">
-        <h1>This blog is a curated journal of my learning journey covering coding projects, diverse skills, and actionable tips with practical guides to help you apply what I’ve discovered.</h1>
-      </div>
+       {/* Description */}
+      <motion.div
+        variants={fadeUp}
+        custom={3}
+        className="font-jetbrains text-center mt-8 mb-2 max-w-3xl mx-auto text-gray-700"
+      >
+        <h2 className="text-base md:text-lg font-normal">
+          This blog is a curated journal of my learning journey covering coding projects,
+          diverse skills, and actionable tips with practical guides to help you apply what I’ve discovered.
+        </h2>
+      </motion.div>
 
-      <div className="flex justify-center mt-6 mb-6">
+      <motion.div
+        variants={fadeUp}
+        custom={4}
+        className="flex justify-center mt-6 mb-6"
+      >
         <button
           onClick={() => navigate("/blogs")}
-          className="px-6 py-3 bg-[#eaaa3c] text-white rounded-lg cursor-pointer"
+          className="px-8 py-3 bg-[#eaaa3c] hover:bg-amber-400 transition-all duration-200 text-white font-semibold text-lg rounded-3xl shadow-sm active:scale-95"
         >
           Read more blogs
         </button>
-      </div>
+      </motion.div>
 
       {/* grid blog preview */}
-      <div className="mt-5 px-2 md:px-10 max-w-5xl mx-auto">
+      <motion.div
+            variants={fadeUp}
+            custom={5}
+            className="flex justify-center py-5"
+          >
         {previewData.length === 0 ? (
           // แสดง GIF โหลดเมื่อยังไม่มีข้อมูล
           <div className="flex justify-center py-20">
@@ -81,8 +129,8 @@ const Home = () => {
             ))}
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
