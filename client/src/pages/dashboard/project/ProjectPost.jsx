@@ -61,7 +61,7 @@ const ProjectPost = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
+    <form onSubmit={handleSubmit} className="px-10 py-10 max-w-xl mx-auto space-y-4">
       <input
         type="text"
         name="title"

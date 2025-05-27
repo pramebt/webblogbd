@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { blogs } from '../../../service/blog'
-import Cardblog from '../../components/common/Cardblog'
+import Cardblog from '../../components/common/blog/Cardblog'
 import { useNavigate } from 'react-router-dom'
 const Dashboard = () => {
   const [data,setData] = useState([])

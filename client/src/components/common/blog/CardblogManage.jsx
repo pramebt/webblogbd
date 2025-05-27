@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
-import { deleteBlogById } from "../../../service/blog";
+import { deleteBlogById } from "../../../../service/blog";
  
 const CardblogManage = ({ item, onSuccess }) => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const CardblogManage = ({ item, onSuccess }) => {
   // ฟังก์ชันกด Edit: นำทางไปยังหน้าแก้ไขพร้อม id
   const handleEdit = (e) => {
     e.stopPropagation(); // ป้องกันคลิกลิงก์ parent
-    navigate(`/dashboard/editpost/${item.id}`);
+    navigate(`/dashboard/blog/editpost/${item.id}`);
   };
 
   return (

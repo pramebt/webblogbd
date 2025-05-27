@@ -6,18 +6,18 @@ import Login from './pages/Login'
 import Home from './pages/Home';
 import Dashboard from './pages/dashboard/Dashboard';
 import ProtectRoute from './components/layout/ProtectRoute';
-import Post from './pages/dashboard/Post';
-import Manage from './pages/dashboard/Manage';
+import Post from './pages/dashboard/blog/Post';
+import Manage from './pages/dashboard/blog/Manage';
 import DashboardLayout from './pages/dashboard/DashboardLayout';
 import Showblog from './pages/Showblog';
-import Editpost from './pages/dashboard/Editpost';
+import Editpost from './pages/dashboard/blog/Editpost';
 import Blogs from './pages/Blogs';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Project from './pages/Project';
-import ProjectManage from './pages/dashboard/ProjectManage';
-import ProjectPost from './pages/dashboard/ProjectPost';
-import ProjectEdit from './pages/dashboard/ProjectEdit';
+import ProjectManage from './pages/dashboard/project/ProjectManage';
+import ProjectPost from './pages/dashboard/project/ProjectPost';
+import ProjectEdit from './pages/dashboard/project/ProjectEdit';
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { postBlogById } from "../../../service/blog";
+import { postBlogById } from "../../../../service/blog";
 
 const Post = () => {
   const navigate = useNavigate();
@@ -81,48 +81,52 @@ const Post = () => {
       <div className="flex flex-col space-y-4">
         <label className="text-gray-700">Blocks</label>
         {form.blocks.map((block, index) => (
-          <div key={index} className="grid grid-cols-3 gap-4 items-end">
-            {/* เปลี่ยนเป็น dropdown */}
-            <div className="col-span-1">
-              <label className="mb-1 text-gray-600 block">Type</label>
-              <select
-                value={block.type}
-                onChange={(e) =>
-                  handleBlockChange(index, "type", e.target.value)
-                }
-                className="border rounded p-2 appearance-none focus:outline-none focus:ring w-full"
-                 required
-              >
-                <option value="" disabled>
-                  Choose type 
-                </option>
-                <option value="header">Header</option>
-                <option value="paragraph">Paragraph</option>
-                <option value="code">Code</option>
-              </select>
-            </div>
-            <div className="col-span-2">
-              <label className="mb-1 text-gray-600 block">Data</label>
-              <input
-                type="text"
-                value={block.data}
-                onChange={(e) =>
-                  handleBlockChange(index, "data", e.target.value)
-                }
-                className="border rounded p-2 focus:outline-none focus:ring w-full"
-                placeholder="Enter block data"
-                required
-              />
-            </div>
-            <button
-              type="button"
-              onClick={() => removeBlock(index)}
-              className="text-red-500 hover:underline col-start-3"
-            >
-              Remove
-            </button>
-          </div>
-        ))}
+  <div
+    key={index}
+    className="border rounded p-4 flex flex-col gap-2 bg-gray-50 relative"
+  >
+    {/* Type ด้านบน */}
+    <div>
+      <label className="mb-1 text-gray-600 block">Type</label>
+      <select
+        value={block.type}
+        onChange={(e) =>
+          handleBlockChange(index, "type", e.target.value)
+        }
+        className="border rounded p-2 appearance-none focus:outline-none focus:ring w-full"
+        required
+      >
+        <option value="" disabled>
+          Choose type
+        </option>
+        <option value="header">Header</option>
+        <option value="paragraph">Paragraph</option>
+        <option value="code">Code</option>
+      </select>
+    </div>
+    {/* Data */}
+    <div>
+      <label className="mb-1 text-gray-600 block">Data</label>
+      <textarea
+        value={block.data}
+        onChange={(e) =>
+          handleBlockChange(index, "data", e.target.value)
+        }
+        className="border rounded p-2 focus:outline-none focus:ring w-full h-20"
+        placeholder="Enter block data"
+        required
+      />
+    </div>
+    {/* Remove button */}
+    <button
+      type="button"
+      onClick={() => removeBlock(index)}
+      className="absolute top-2 right-2 text-red-500 hover:underline text-sm"
+    >
+      Remove
+    </button>
+  </div>
+))}
         <button
           type="button"
           onClick={addBlock}

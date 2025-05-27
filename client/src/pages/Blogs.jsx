@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState,useRef } from "react";
 import { blogs } from "../../service/blog";
 import { useNavigate } from "react-router-dom";
-import Cardblogview from "../components/common/Cardblogview";
+import Cardblogview from "../components/common/blog/Cardblogview";
 import CardLoading from "../components/common/CardLoading";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 const fadeUp = {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getBlogById, editBlogById } from '../../../service/blog'
+import { getBlogById, editBlogById } from '../../../../service/blog'
 
-const EditBlog = () => {
+const Editpost = () => {
   const { id } = useParams()
   const blogId = parseInt(id, 10)
   const navigate = useNavigate()
@@ -51,26 +51,23 @@ const EditBlog = () => {
   }
   
   const addBlock = () =>
-  setForm(previousForm => {
-    const newBlock = { type: '', data: '' };
-    return {
-      ...previousForm,
-      blocks: [...previousForm.blocks, newBlock],
-    };
-  });
-
+    setForm(previousForm => {
+      const newBlock = { type: '', data: '' }
+      return {
+        ...previousForm,
+        blocks: [...previousForm.blocks, newBlock],
+      }
+    })
 
   const removeBlock = (index) =>
-  setForm(prevForm => {
-    const newBlocks = prevForm.blocks.filter((_, i) => i !== index);
-    return { ...prevForm, blocks: newBlocks };
-  });
-
+    setForm(prevForm => {
+      const newBlocks = prevForm.blocks.filter((_, i) => i !== index)
+      return { ...prevForm, blocks: newBlocks }
+    })
 
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      // เปลี่ยนเป็นส่งแยก args ให้ตรงกับ service
       await editBlogById(blogId, form.title, form.description, form.blocks)
       alert('Blog updated successfully')
       navigate('/dashboard')
@@ -115,8 +112,17 @@ const EditBlog = () => {
       <div className="flex flex-col space-y-4">
         <label className="text-gray-700">Blocks</label>
         {form.blocks.map((block, index) => (
-          <div key={index} className="grid grid-cols-3 gap-4 items-end">
-            <div className="col-span-1">
+          <div key={index} className="border rounded-lg p-4 flex flex-col gap-2 bg-gray-50 relative">
+            {/* Remove button ขวาบน */}
+            <button
+              type="button"
+              onClick={() => removeBlock(index)}
+              className="absolute top-2 right-2 text-red-500 hover:underline text-sm"
+            >
+              Remove
+            </button>
+            {/* Type dropdown ด้านบน */}
+            <div>
               <label className="mb-1 text-gray-600 block">Type</label>
               <select
                 value={block.type}
@@ -124,7 +130,7 @@ const EditBlog = () => {
                   handleBlockChange(index, "type", e.target.value)
                 }
                 className="border rounded p-2 appearance-none focus:outline-none focus:ring w-full"
-                 required
+                required
               >
                 <option value="" disabled>
                   Choose type 
@@ -135,24 +141,17 @@ const EditBlog = () => {
                 <option value="code">Code</option>
               </select>
             </div>
-            <div className="col-span-2">
+            {/* Data textarea */}
+            <div>
               <label className="mb-1 text-gray-600 block">Data</label>
-              <input
-                type="text"
+              <textarea
                 value={block.data}
                 onChange={e => handleBlockChange(index, 'data', e.target.value)}
-                className="border rounded p-2 focus:outline-none focus:ring w-full"
+                className="border rounded p-2 focus:outline-none focus:ring w-full h-20"
                 placeholder="Enter block data"
                 required
               />
             </div>
-            <button
-              type="button"
-              onClick={() => removeBlock(index)}
-              className="text-red-500 hover:underline col-start-3"
-            >
-              Remove
-            </button>
           </div>
         ))}
         <button
@@ -175,4 +174,4 @@ const EditBlog = () => {
   )
 }
 
-export default EditBlog
+export default Editpost;

@@ -88,7 +88,7 @@ const ProjectEdit = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
+    <form onSubmit={handleSubmit} className="px-10 py-10 max-w-xl mx-auto space-y-4">
       <h2 className="text-2xl font-bold">Edit Project</h2>
 
       <input

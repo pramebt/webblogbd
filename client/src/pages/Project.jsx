@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { getAllProjects } from "../../service/project"; // เปลี่ยนจาก blogs เป็น getProjects
-import Cardprojectview from "../components/common/Cardprojectview";
+import Cardprojectview from "../components/common/project/Cardprojectview";
 import CardLoading from "../components/common/CardLoading";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import ProjectModal from "../components/common/project/ProjectModal";
 const fadeUp = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
@@ -40,7 +41,7 @@ const Project = () => {
     };
     fetchData();
   }, []);
-  
+
   return (
     <motion.div
       ref={ref}
@@ -49,14 +50,9 @@ const Project = () => {
       animate={isInView ? "visible" : "hidden"}
       className="px-4 sm:px-10 lg:px-20 py-10 flex flex-col items-center"
     >
-      <motion.h1
-        variants={fadeUp}
-        custom={1}
-        className="text-center text-3xl md:text-4xl lg:text-5xl mb-10"
-      >
-        Projects
-      </motion.h1>
+      {/* ... โค้ดเดิม ... */}
       {data.length === 0 ? (
+        // loading state เหมือนเดิม
         <div className="flex justify-center py-20">
           <img
             src="/assets/icons/Rolling.gif"
@@ -69,14 +65,15 @@ const Project = () => {
         </div>
       ) : (
         <motion.div 
-        variants={fadeUp}
-        custom={2}
-        className="grid w-full h-fit gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          variants={fadeUp}
+          custom={2}
+          className="grid w-full h-fit gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {data.map((item, index) => (
             <div
               key={index}
               className="group cursor-pointer"
-              onClick={() => setSelectedProject(item)} // 👈 เปิด modal
+              onClick={() => setSelectedProject(item)}
             >
               <Cardprojectview item={item} />
             </div>
@@ -84,64 +81,11 @@ const Project = () => {
         </motion.div>
       )}
 
-      {/* ✅ Modal แสดงข้อมูลโปรเจกต์ */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-10 py-10">
-          <div className="bg-white max-w-lg w-full rounded-xl shadow-lg p-6 relative">
-            {/* ปุ่มปิด */}
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl"
-              onClick={() => setSelectedProject(null)}
-            >
-              &times;
-            </button>
-
-            <h2 className="text-2xl font-bold mb-2">{selectedProject.title}</h2>
-            <p className="text-gray-600 mb-4">{selectedProject.subtitle}</p>
-            {selectedProject.image_url && (
-              <img
-                src={selectedProject.image_url}
-                alt="project"
-                className="w-full rounded-lg mb-4"
-              />
-            )}
-            <p className="text-gray-800 mb-4">{selectedProject.description}</p>
-
-            {/* ลิงก์ */}
-            <div className="flex flex-row justify-center gap-5">
-              {selectedProject.demo_url && (
-                
-                <a
-                  href={selectedProject.demo_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex flex-row items-center justify-center bg-blue-400 gap-2 px-2 py-1 rounded-4xl text-white font-semibold"
-                >
-                  <img 
-                  src="/assets/icons/play-icon.svg" 
-                  alt="play"
-                  className="w-10" />
-                   Demo
-                </a>
-              )}
-              {selectedProject.github_url && (
-                <a
-                  href={selectedProject.github_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex flex-row items-center justify-center bg-black gap-2 px-2 py-1 rounded-4xl text-white font-semibold"
-                >
-                  <img
-                   src="/assets/icons/github-icon.svg" 
-                   alt="GitHub" 
-                   className="w-10" />
-                  GitHub
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* ✅ ใช้ ProjectModal แทน block modal เดิม */}
+      <ProjectModal 
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </motion.div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getAllProjects } from '../../../service/project';
+import { getAllProjects } from '../../../../service/project';
 import { useNavigate } from 'react-router-dom';
-import CardprojectManage from '../../components/common/CardprojectManage';
+import CardprojectManage from '../../../components/common/project/CardprojectManage';
 
 const ProjectManage = () => {
   const [data, setData] = useState([]);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { blogs } from "../../service/blog";
 
-import Cardblogview from "../components/common/Cardblogview";
+import Cardblogview from "../components/common/blog/Cardblogview";
 import CardLoading from "../components/common/CardLoading";
 
 const Home = () => {

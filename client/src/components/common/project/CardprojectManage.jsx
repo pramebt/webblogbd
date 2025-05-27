@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
-import { deleteProjectById } from "../../../service/project";
+import { deleteProjectById } from "../../../../service/project";
 
 const CardprojectManage = ({ item, onSuccess }) => {
   const navigate = useNavigate();

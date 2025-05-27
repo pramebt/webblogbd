@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { blogs } from '../../../service/blog'
+import { blogs } from '../../../../service/blog'
 import { useNavigate } from 'react-router-dom'
-import CardblogManage from '../../components/common/CardblogManage'
+import CardblogManage from '../../../components/common/blog/CardblogManage'
+
 const Manage = () => {
   const [data,setData] = useState([])
   const navigate = useNavigate()

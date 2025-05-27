@@ -1,8 +1,7 @@
-// src/pages/Showblog.jsx
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getBlogById } from "../../service/blog";
+
 const Showblog = () => {
   const navigate = useNavigate();
   const id = useParams();
@@ -21,20 +20,21 @@ const Showblog = () => {
   }, [id]);
 
   if (!data) {
-    return <div className="flex justify-center">
-      <img src="/assets/icons/Rolling.gif" alt="loading"
-      className="w-24 h-24" />
-    </div>
+    return (
+      <div className="flex justify-center">
+        <img src="/assets/icons/Rolling.gif" alt="loading" className="w-24 h-24" />
+      </div>
+    );
   }
-  
+
   const elements = [
     { id: 'title',      type: 'title',       data: data.title },
     { id: 'description', type: 'description', data: data.description },
-    ...data.blocks
+    ...(data.blocks || [])
   ];
 
   return (
-    <div className="pt-20 px-20">
+    <div className="pt-20 px-20 py-10">
       {elements.map((block) => {
         const isThai = /[\u0E00-\u0E7F]/.test(block.data);
         const fontClass = isThai ? "font-kanit" : "";
@@ -54,7 +54,7 @@ const Showblog = () => {
             return (
               <p
                 key={block.id}
-                className={`${fontClass} text-gray-700 mb-6`}
+                className={`${fontClass} text-gray-700 mb-6 whitespace-pre-line`} 
               >
                 {block.data}
               </p>
@@ -64,7 +64,7 @@ const Showblog = () => {
             return (
               <h2
                 key={block.id}
-                className={`${fontClass} font-semibold text-2xl mb-4`}
+                className={`${fontClass} font-semibold text-2xl mb-4 whitespace-pre-line`}
               >
                 {block.data}
               </h2>
@@ -74,7 +74,7 @@ const Showblog = () => {
             return (
               <p
                 key={block.id}
-                className={`${fontClass} text-base leading-relaxed mb-4`}
+                className={`${fontClass} text-base leading-relaxed mb-4 whitespace-pre-line`} 
               >
                 {block.data}
               </p>
@@ -84,7 +84,7 @@ const Showblog = () => {
             return (
               <pre
                 key={block.id}
-                className={`${fontClass} text-white bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4 overflow-auto`}
+                className={`${fontClass} text-white bg-gray-100 dark:bg-gray-800 p-4 rounded mb-4 overflow-auto whitespace-pre-wrap`} // แก้ตรงนี้!
               >
                 <code>{block.data}</code>
               </pre>
@@ -92,7 +92,7 @@ const Showblog = () => {
 
           default:
             return (
-              <div key={block.id} className={`${fontClass} mb-4`}>
+              <div key={block.id} className={`${fontClass} mb-4 whitespace-pre-line`}> {/* แก้ตรงนี้! */}
                 {block.data}
               </div>
             );
